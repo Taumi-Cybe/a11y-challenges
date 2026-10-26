@@ -1,6 +1,25 @@
-*:focus { outline: none; } /* Problème 2 : focus totalement invisible */
+/* Focus visible, uniquement à la navigation clavier */
+:focus-visible {
+  outline: 3px solid #1a56db;
+  outline-offset: 2px;
+}
 
-.decoy { position: absolute; left: -1px; }
+/* Le formulaire reçoit le focus du skip link, pas besoin d'anneau dessus */
+.form:focus { outline: none; }
+
+/* Skip link : caché hors écran, visible quand il a le focus */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  position: static;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: #111;
+  color: #fff;
+}
+
 .form { display: flex; flex-direction: column; gap: .4rem; max-width: 320px; margin-top: 1.5rem; }
 .form input, .form select { padding: .5rem; }
 .form button { margin-top: .6rem; padding: .6rem 1rem; }
